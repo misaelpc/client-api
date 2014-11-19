@@ -11,9 +11,7 @@ defmodule Router.Router do
 
 
   #Other scopes may use custom stacks.
-  scope "/api" do
-    pipe_through :api
-
-    get "/", Router.PageController, :show_root
+  scope "/client/:rfc" do
+    get "/", Router.ClientController, :client
   end
 end
