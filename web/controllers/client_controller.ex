@@ -6,8 +6,7 @@ defmodule Router.ClientController do
   def client(conn, _params) do
     :odbc.start
     database = :odbc.connect('DSN=Hetzner;UID=sa;PWD=RakuRaku1', [])
-
-    json conn, JSON.encode!(database)
+    json conn, 200 , JSON.encode!(headers)
   end
 
 end

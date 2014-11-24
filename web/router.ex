@@ -12,6 +12,7 @@ defmodule Router.Router do
 
   #Other scopes may use custom stacks.
   scope "api/v1/clients/:rfc" do
+    pipe_through :browser
     get "/", Router.ClientController, :client
   end
 end
