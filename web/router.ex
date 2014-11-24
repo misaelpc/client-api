@@ -12,6 +12,11 @@ defmodule Router.Router do
 
   #Other scopes may use custom stacks.
   scope "api/v1/clients/:rfc" do
-    get "/", Router.ClientController, :client
+    get "/", Router.ClientController, :datos_fiscales
+  end
+
+    #Other scopes may use custom stacks.
+  scope "api/v1/permisos/:rfc" do
+    get "/", Router.ClientController, :get_permisos
   end
 end
