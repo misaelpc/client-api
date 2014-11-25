@@ -13,11 +13,6 @@ defmodule Router.Router do
     get "/", Router.ClientController, :datos_fiscales
   end
 
-    #Other scopes may use custom stacks.
-  scope "api/v1/permisos/:rfc" do
-    get "/", Router.ClientController, :get_permisos
-  end
-
   #obtiene los datos fiscales de un rfc
   scope "api/v1/clients/datosFiscales/:rfc" do
     get "/", Router.ClientController, :datos_fiscales
