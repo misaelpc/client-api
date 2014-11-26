@@ -1,6 +1,5 @@
 defmodule Router.ClientController do
   use Phoenix.Controller
-  import Client
 
   plug :action
 
@@ -8,15 +7,18 @@ defmodule Router.ClientController do
     render conn, "index"
   end
 
-  def datos_fiscales(conn, _params) do
-    
+  def client(conn, _params) do
+    client = %Client{}
     rfc = to_char_list(_params["rfc"])
-    json conn, JSON.encode!(client_location(rfc))
+    result = Client.client_location(rfc,client)
+    json conn, JSON.encode!(result)
   end
 
-  def status(conn, _params) do
+  def permissions(conn, _params) do
+    permission = %Permission{}
     rfc = to_char_list(_params["rfc"])
-    json conn, JSON.encode!(client_permissions(rfc))
+    result = Permission.permissions(rfc,permission)
+    json conn, JSON.encode!(result)
   end
 
 end
