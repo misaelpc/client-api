@@ -9,8 +9,7 @@ defmodule Router.ClientController do
 
   def client(conn, _params) do
     client = %Client{}
-    rfc = to_char_list(_params["rfc"])
-    result = Client.client_location(rfc,client)
+    result = Client.fetch_data(to_char_list(_params["rfc"]), client)
     json conn, JSON.encode!(result)
   end
 

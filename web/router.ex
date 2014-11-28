@@ -9,7 +9,7 @@ defmodule Router.Router do
   end
 
   #obtiene los datos fiscales de un cliente para un cliente
-  scope "api/v1/clients/:rfc" do
+  scope "api/v1/clientes/:rfc" do
     get "/", Router.ClientController, :client
   end
 
