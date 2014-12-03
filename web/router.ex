@@ -5,7 +5,7 @@ defmodule Router.Router do
     # Use the default browser stack.
     pipe_through :browser
 
-    get "/", Router.PageController, :index, as: :pages
+    get "/", Router.ClientController, :index, as: :pages
   end
 
   #obtiene los datos fiscales de un cliente para un cliente

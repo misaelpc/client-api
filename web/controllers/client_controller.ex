@@ -4,7 +4,16 @@ defmodule Router.ClientController do
   plug :action
 
   def index(conn, _params) do
-    render conn, "index"
+    #results = hd(conn.req_headers)
+    auth = conn |> get_req_header("authorization")
+    #conn = conn.put_resp_header(conn,"WWW-Authenticate","Basic")
+    user = %User{}
+    User.authenticate(auth)
+    
+    conn
+    |> put_resp_content_type("text/plain")
+    |> put_resp_header("WWW-Authenticate","Basic")
+    |> send_resp(200, auth)
   end
 
   def client(conn, _params) do
