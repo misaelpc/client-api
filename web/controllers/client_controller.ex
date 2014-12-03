@@ -29,6 +29,12 @@ defmodule Router.ClientController do
     json conn, JSON.encode!(result)
   end
 
+  def authenticate(conn, _params) do
+    auth = conn |> get_req_header("authorization")
+    user = %User{}
+    User.authenticate(auth)
+  end
+
 end
 
 

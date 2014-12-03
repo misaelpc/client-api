@@ -8,6 +8,16 @@ defmodule Router.Router do
     get "/", Router.ClientController, :index, as: :pages
   end
 
+  pipeline :api do
+    
+  end
+
+  scope "/v1" do
+    pipe_through :api
+
+    get "/lol", Router.ClientController, :index, as: :pages
+  end
+
   #obtiene los datos fiscales de un cliente para un cliente
   scope "api/v1/clientes/:rfc" do
     get "/", Router.ClientController, :client
