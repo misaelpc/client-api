@@ -9,17 +9,17 @@ defmodule Router.Router do
   end
 
   #obtiene los datos fiscales de un cliente para un cliente
-  scope "api/v1/clientes/:rfc" do
+  scope "v1/clientes/:rfc" do
     get "/", Router.ClientController, :client
   end
 
-  #obtiene el estatus de un rfc
-  # scope "api/v1/clients/:rfc/branches" do
-  #   get "/", Router.ClientController, :status
-  # end
-
   #obtiene los permisos para un cliente con el rfc especifico
-  scope "api/v1/clients/:rfc/permissions" do
+  scope "v1/clientes/:rfc/permisos" do
     get "/", Router.ClientController, :permissions
+  end
+
+  #obtiene las sucursales de un rfc
+  scope "v1/clientes/:rfc/sucursales" do
+     get "/", Router.ClientController, :branch_office
   end
 end

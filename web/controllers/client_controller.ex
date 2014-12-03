@@ -15,8 +15,13 @@ defmodule Router.ClientController do
 
   def permissions(conn, _params) do
     permission = %Permission{}
-    rfc = to_char_list(_params["rfc"])
-    result = Permission.permissions(rfc,permission)
+    result = Permission.permissions(to_char_list(_params["rfc"]), permission)
+    json conn, JSON.encode!(result)
+  end
+
+  def branch_office(conn, _params) do
+    branchOffice = %BranchOffice{}
+    result = BranchOffice.fetch_branch_office(to_char_list(_params["rfc"]), branchOffice)
     json conn, JSON.encode!(result)
   end
 
