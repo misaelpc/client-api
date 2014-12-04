@@ -6,21 +6,28 @@ defmodule Router.ClientController do
   def client(conn, _params) do
     authenticate(conn)
     client = %Client{}
-    result = Client.fetch_data(to_char_list(_params["rfc"]), client)
+    result = _params["rfc"]
+            |> to_char_list
+            |> Client.fetch_data(client)
     json conn, JSON.encode!(result)
   end
 
   def permissions(conn, _params) do
     authenticate(conn)
     permission = %Permission{}
-    result = Permission.permissions(to_char_list(_params["rfc"]), permission)
+    result = _params["rfc"]
+            |> to_char_list
+            |> Permission.permissions(permission)
+
     json conn, JSON.encode!(result)
   end
 
   def branch_office(conn, _params) do
     authenticate(conn)
     branchOffice = %BranchOffice{}
-    result = BranchOffice.fetch_branch_office(to_char_list(_params["rfc"]), branchOffice)
+    result = _params["rfc"]
+            |> to_char_list
+            |> BranchOffice.fetch_branch_office(branchOffice)
     json conn, JSON.encode!(result)
   end
 
